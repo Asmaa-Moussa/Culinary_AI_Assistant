@@ -16,10 +16,6 @@ def display_ingredients_table(ingredients):
 def format_directions(directions_text):
     if not directions_text:
         return ""
-    # Use a specific regex to identify step starts (e.g., "1. ") while avoiding 
-    # false positives from temperatures (e.g., "350."). 
-    # We look for 1-2 digits followed by a period and space, not preceded by another digit.
-    # \s* replaces existing whitespace/newlines to ensure clean double-spacing for Streamlit.
     return re.sub(r'\s*(?<![0-9])(?=[0-9]{1,2}\.\s)', '\n\n', directions_text).strip()
 
 def try_parse_json_or_dict(text: str):
